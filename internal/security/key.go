@@ -188,7 +188,8 @@ func (k Key) ValidateChannel(ch *Channel) bool {
 // SetTarget sets the target channel for the key.
 func (k Key) SetTarget(channel string) error {
 	if !strings.HasSuffix(channel, "/") {
-		return ErrTargetInvalid
+		//return ErrTargetInvalid
+		channel = channel + "/"
 	}
 
 	// Get all of the parts for the target channel

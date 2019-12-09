@@ -236,6 +236,21 @@ func (c *Channel) parseChannel(text []byte) (i int) {
 				c.ChannelType = ChannelInvalid
 				return i
 			}
+			if i+1 == length {
+				c.Query = append(c.Query, hash.Of(text[offset:i+1]))
+				c.Channel = text[:i+1]
+				if c.ChannelType != ChannelWildcard {
+					c.ChannelType = ChannelStatic
+				}
+				return i+1
+			} else if text[i+1] == '?' {
+				c.Channel = text[:i+1]
+				if c.ChannelType != ChannelWildcard {
+					c.ChannelType = ChannelStatic
+				}
+				return i+2
+			}
+
 			chanChars++
 			continue
 
