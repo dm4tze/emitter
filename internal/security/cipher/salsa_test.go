@@ -22,10 +22,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type x struct {
-	test string
-}
-
 // BenchmarkEncryptKey2-8   	 5000000	       356 ns/op	      64 B/op	       2 allocs/op
 func Benchmark_Salsa_EncryptKey(b *testing.B) {
 	cipher := new(Salsa)
